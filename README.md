@@ -204,3 +204,18 @@ different places (see below).
   rows carry the same answer and both are scored against the same reference. We kept both rows as the file has them.
 - **Single run.** Each subset was run once at temperature 0.7, so a repeat run would give a slightly different
   Average.
+
+## 7. Acknowledgements
+
+The questions, reference answers and evaluation code are from
+[GraphRAG-Bench](https://github.com/GraphRAG-Bench/GraphRAG-Benchmark) (Copyright (c) 2025 XMU-DeepLIT, MIT License).
+Leaderboard figures are from [graphrag-bench.github.io](https://graphrag-bench.github.io/).
+
+```bibtex
+@article{xiang2025use,
+  title={When to use Graphs in RAG: A Comprehensive Analysis for Graph Retrieval-Augmented Generation},
+  author={Xiang, Zhishang and Wu, Chuanjie and Zhang, Qinggang and Chen, Shengyuan and Hong, Zijin and Huang, Xiao and Su, Jinsong},
+  journal={arXiv preprint arXiv:2506.05690},
+  year={2025}
+}
+```
