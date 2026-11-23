@@ -94,21 +94,23 @@ with no conversation history.
 
 ## 4. Files
 
-| Path                                  | Contents                                                                            |
-| ------------------------------------- | ----------------------------------------------------------------------------------- |
-| `medical/generated_answers.json.xz`   | All 2,062 Medical answers, in the official evaluator's input format (xz-compressed) |
-| `medical/per_question_scores.json.xz` | The official evaluator's score for each Medical question (xz-compressed)            |
-| `medical/summary.json`                | Medical per-type scores, other metrics and scored counts                            |
-| `novel/generated_answers.json.xz`     | All 2,010 Novel answers, in the official evaluator's input format (xz-compressed)   |
-| `novel/per_question_scores.json.xz`   | The official evaluator's score for each Novel question (xz-compressed)              |
-| `novel/summary.json`                  | Novel per-type scores, other metrics and scored counts                              |
+All result files are in the `graphrag_bench_submission/` folder:
+
+| Path                                                            | Contents                                                                            |
+| --------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `graphrag_bench_submission/medical/generated_answers.json.xz`   | All 2,062 Medical answers, in the official evaluator's input format (xz-compressed) |
+| `graphrag_bench_submission/medical/per_question_scores.json.xz` | The official evaluator's score for each Medical question (xz-compressed)            |
+| `graphrag_bench_submission/medical/summary.json`                | Medical per-type scores, other metrics and scored counts                            |
+| `graphrag_bench_submission/novel/generated_answers.json.xz`     | All 2,010 Novel answers, in the official evaluator's input format (xz-compressed)   |
+| `graphrag_bench_submission/novel/per_question_scores.json.xz`   | The official evaluator's score for each Novel question (xz-compressed)              |
+| `graphrag_bench_submission/novel/summary.json`                  | Novel per-type scores, other metrics and scored counts                              |
 
 The answer and score files are compressed with xz to stay within GitHub's file size limit (uncompressed, the Medical
 files are about 58 MB each and the Novel files about 310 MB each). The retrieved chunks repeat across questions, so xz
 reduces every file to under 4 MB. To decompress (the original `.json` is written next to each file):
 
 ```bash
-xz -dk medical/*.json.xz novel/*.json.xz
+xz -dk graphrag_bench_submission/medical/*.json.xz graphrag_bench_submission/novel/*.json.xz
 ```
 
 or read them directly in Python with `lzma.open(path, "rt", encoding="utf-8")`.
@@ -144,13 +146,14 @@ python -m Evaluation.generation_eval \
   --mode API \
   --model gpt-4o-mini \
   --embedding_model BAAI/bge-large-en-v1.5 \
-  --data_file <path_to_this_repo>/medical/generated_answers.json \
+  --data_file <path_to_this_repo>/graphrag_bench_submission/medical/generated_answers.json \
   --output_file scores_medical.json \
   --detailed_output
 ```
 
-For the Novel subset, pass `novel/generated_answers.json`. The judge's output varies a little between runs, so re-scored numbers can differ
-slightly from ours, and a few questions may be dropped in different places (see below).
+For the Novel subset, pass `graphrag_bench_submission/novel/generated_answers.json`. The judge's output varies a
+little between runs, so re-scored numbers can differ slightly from ours, and a few questions may be dropped in
+different places (see below).
 
 ## 6. Counts and caveats
 
