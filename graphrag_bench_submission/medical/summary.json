@@ -1,0 +1,30 @@
+{
+  "types": {
+    "Fact Retrieval": {
+      "answer_correctness": 75.87,
+      "scored": 1096,
+      "answers": 1098,
+      "rouge_score": 46.51
+    },
+    "Complex Reasoning": {
+      "answer_correctness": 76.96,
+      "scored": 509,
+      "answers": 509,
+      "rouge_score": 33.71
+    },
+    "Contextual Summarize": {
+      "answer_correctness": 79.89,
+      "scored": 289,
+      "answers": 289,
+      "coverage_score": 62.26
+    },
+    "Creative Generation": {
+      "answer_correctness": 73.72,
+      "scored": 166,
+      "answers": 166,
+      "coverage_score": 46.53,
+      "faithfulness": 53.69
+    }
+  },
+  "average": 76.61
+}
