@@ -43,32 +43,62 @@ were dropped by the evaluator itself (see [section 6](#6-counts-and-caveats)).
 ### Against the published leaderboard
 
 Other systems' figures are taken from the [GraphRAG-Bench leaderboard](https://graphrag-bench.github.io/) as
-published; we did not re-run them. All use `gpt-4o-mini` for generation. Sorted by Medical Average.
+published; we did not re-run them. All use `gpt-4o-mini` for generation. Scores are ACC; Average is the mean of the
+four question types.
 
-| Method                       |   Medical |     Novel |
-| ---------------------------- | --------: | --------: |
-| KnowCosmos                   |     80.15 |     70.34 |
-| GraphRAG-SDK                 |     76.87 |     66.09 |
-| KT-MOSAIC                    |     76.80 |     64.28 |
-| **Synapt (this repository)** | **76.61** | **56.34** |
-| GLM-RAG                      |     76.01 |     60.59 |
-| Sapient-Bodhi-GraphRAG       |     75.75 |     66.30 |
-| AtlasGraphRAG                |     75.62 |     66.18 |
-| G-reasoner                   |     73.30 |     58.94 |
-| AutoPrunedRetriever-llm      |     67.00 |     63.72 |
-| HippoRAG2                    |     64.85 |     56.48 |
-| Fast-GraphRAG                |     64.12 |     52.02 |
-| LightRAG                     |     62.59 |     45.09 |
-| RAG (w/ rerank)              |     62.43 |     48.35 |
-| RAG (w/o rerank)             |     61.00 |     47.93 |
-| HippoRAG                     |     59.08 |     44.75 |
-| StructRAG                    |     58.56 |     49.13 |
-| RAPTOR                       |     57.10 |     43.24 |
-| Lazy-GraphRAG                |     56.89 |     50.59 |
-| KGP                          |     56.33 |     48.01 |
-| KET-RAG                      |     47.05 |     47.62 |
-| MS-GraphRAG (local)          |     45.16 |     50.93 |
-| MS-GraphRAG (global)         |     28.56 |     44.52 |
+#### Medical
+
+|  Rank | Method                       |   Average | Fact Retrieval | Complex Reasoning | Contextual Summarize | Creative Generation |
+| ----: | ---------------------------- | --------: | -------------: | ----------------: | -------------------: | ------------------: |
+|     1 | KnowCosmos                   |     80.15 |          80.14 |             83.49 |                87.96 |               69.01 |
+|     2 | GraphRAG-SDK                 |     76.87 |          74.50 |             76.47 |                82.29 |               74.21 |
+|     3 | KT-MOSAIC                    |     76.80 |          75.86 |             76.57 |                85.46 |               68.65 |
+| **4** | **Synapt (this repository)** | **76.61** |      **75.87** |         **76.96** |            **79.89** |           **73.72** |
+|     5 | GLM-RAG                      |     76.01 |          71.74 |             76.09 |                79.81 |               76.42 |
+|     6 | Sapient-Bodhi-GraphRAG       |     75.75 |          76.06 |             75.74 |                76.32 |               74.88 |
+|     7 | AtlasGraphRAG                |     75.62 |          73.73 |             76.35 |                78.90 |               73.48 |
+|     8 | G-reasoner                   |     73.30 |          68.84 |             75.17 |                77.23 |               72.04 |
+|     9 | AutoPrunedRetriever-llm      |     67.00 |          61.25 |             71.59 |                70.14 |               65.02 |
+|    10 | HippoRAG2                    |     64.85 |          66.28 |             61.98 |                63.08 |               68.05 |
+|    11 | Fast-GraphRAG                |     64.12 |          60.93 |             61.73 |                67.88 |               65.93 |
+|    12 | LightRAG                     |     62.59 |          63.32 |             61.32 |                63.14 |               67.91 |
+|    13 | RAG (w/ rerank)              |     62.43 |          64.73 |             58.64 |                65.75 |               60.61 |
+|    14 | RAG (w/o rerank)             |     61.00 |          63.72 |             57.61 |                63.72 |               58.94 |
+|    15 | HippoRAG                     |     59.08 |          56.14 |             55.87 |                59.86 |               64.43 |
+|    16 | StructRAG                    |     58.56 |          55.38 |             56.17 |                62.48 |               60.21 |
+|    17 | RAPTOR                       |     57.10 |          54.07 |             53.20 |                58.73 |               62.38 |
+|    18 | Lazy-GraphRAG                |     56.89 |          60.25 |             47.82 |                57.28 |               62.22 |
+|    19 | KGP                          |     56.33 |          55.53 |             51.53 |                54.51 |               63.77 |
+|    20 | KET-RAG                      |     47.05 |          60.35 |             39.56 |                45.27 |               43.04 |
+|    21 | MS-GraphRAG (local)          |     45.16 |          38.63 |             47.04 |                41.87 |               53.11 |
+|    22 | MS-GraphRAG (global)         |     28.56 |          16.42 |             15.61 |                19.82 |               20.81 |
+
+#### Novel
+
+|   Rank | Method                       |   Average | Fact Retrieval | Complex Reasoning | Contextual Summarize | Creative Generation |
+| -----: | ---------------------------- | --------: | -------------: | ----------------: | -------------------: | ------------------: |
+|      1 | KnowCosmos                   |     70.34 |          67.13 |             64.25 |                83.00 |               67.00 |
+|      2 | Sapient-Bodhi-GraphRAG       |     66.30 |          68.19 |             60.78 |                70.49 |               65.74 |
+|      3 | AtlasGraphRAG                |     66.18 |          66.37 |             61.80 |                71.47 |               65.09 |
+|      4 | GraphRAG-SDK                 |     66.09 |          65.49 |             59.26 |                75.42 |               64.21 |
+|      5 | KT-MOSAIC                    |     64.28 |          65.43 |             57.57 |                74.20 |               55.18 |
+|      6 | AutoPrunedRetriever-llm      |     63.72 |          45.99 |             62.80 |                83.10 |               62.97 |
+|      7 | GLM-RAG                      |     60.59 |          61.36 |             53.60 |                73.11 |               54.31 |
+|      8 | G-reasoner                   |     58.94 |          60.07 |             53.92 |                71.28 |               50.48 |
+|      9 | HippoRAG2                    |     56.48 |          60.14 |             53.38 |                64.10 |               48.28 |
+| **10** | **Synapt (this repository)** | **56.34** |      **52.13** |         **52.85** |            **64.85** |           **55.54** |
+|     11 | Fast-GraphRAG                |     52.02 |          56.95 |             48.55 |                56.41 |               46.18 |
+|     12 | MS-GraphRAG (local)          |     50.93 |          49.29 |             50.93 |                64.40 |               39.10 |
+|     13 | Lazy-GraphRAG                |     50.59 |          51.65 |             49.22 |                58.29 |               43.23 |
+|     14 | StructRAG                    |     49.13 |          53.84 |             46.27 |                54.28 |               42.16 |
+|     15 | RAG (w/ rerank)              |     48.35 |          60.92 |             42.93 |                51.30 |               38.26 |
+|     16 | KGP                          |     48.01 |          54.15 |             46.31 |                51.21 |               40.37 |
+|     17 | RAG (w/o rerank)             |     47.93 |          58.76 |             41.35 |                50.08 |               41.52 |
+|     18 | KET-RAG                      |     47.62 |          55.39 |             36.59 |                52.47 |               46.03 |
+|     19 | LightRAG                     |     45.09 |          58.62 |             49.07 |                48.85 |               23.80 |
+|     20 | HippoRAG                     |     44.75 |          52.93 |             38.52 |                48.70 |               38.85 |
+|     21 | MS-GraphRAG (global)         |     44.52 |          36.92 |             43.17 |                56.87 |               41.11 |
+|     22 | RAPTOR                       |     43.24 |          49.25 |             38.59 |                47.10 |               38.01 |
 
 ## 2. System description
 
